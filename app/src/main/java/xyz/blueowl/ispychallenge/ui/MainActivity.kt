@@ -1,4 +1,4 @@
-package xyz.blueowl.ispychallenge
+package xyz.blueowl.ispychallenge.ui
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import xyz.blueowl.ispychallenge.R
 import xyz.blueowl.ispychallenge.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
