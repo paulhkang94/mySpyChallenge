@@ -7,16 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import xyz.blueowl.ispychallenge.ISpyApplication
 import xyz.blueowl.ispychallenge.data.repository.DataRepository
-import xyz.blueowl.ispychallenge.databinding.FragmentNotificationsBinding
+import xyz.blueowl.ispychallenge.databinding.FragmentDataBrowserBinding
+import xyz.blueowl.ispychallenge.ui.data_browser.shared.DataBrowserNavState
 import xyz.blueowl.ispychallenge.ui.safeCollectFlow
-import xyz.blueowl.ispychallenge.ui.shared.UniversalListAdapter
+import xyz.blueowl.ispychallenge.ui.data_browser.shared.UniversalListAdapter
 
 class DataBrowserFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentDataBrowserBinding? = null
     private val dataBrowserAdapter = UniversalListAdapter()
 
     // This property is only valid between onCreateView and
@@ -31,7 +33,7 @@ class DataBrowserFragment : Fragment() {
         val factory = DataBrowserViewModelFactory((requireActivity().application as ISpyApplication).dataRepository)
         val dataBrowserViewModel = ViewModelProvider(this, factory)[DataBrowserViewModel::class.java]
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentDataBrowserBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         binding.recyclerViewDataBrowser.apply {
@@ -39,7 +41,18 @@ class DataBrowserFragment : Fragment() {
             adapter = dataBrowserAdapter
         }
 
-        safeCollectFlow(dataBrowserViewModel.userList) {
+        safeCollectFlow(dataBrowserViewModel.navigationFlow) { navState ->
+            val action = when(navState) {
+                is DataBrowserNavState.UserNavState -> {
+                    DataBrowserFragmentDirections.actionNavigationDataBrowserToNavigationUser(navState.userId)
+                }
+                else -> throw IllegalArgumentException("Cannot support navState: ${navState::class.java}")
+            }
+
+            findNavController().navigate(action)
+        }
+
+        safeCollectFlow(dataBrowserViewModel.adapterItems) {
             dataBrowserAdapter.submitList(it)
         }
 

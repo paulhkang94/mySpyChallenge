@@ -3,23 +3,128 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_near_me">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_near_me"
         android:name="xyz.blueowl.ispychallenge.ui.near_me.NearMeFragment"
         android:label="@string/title_near_me"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_near_me" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_new_challenge"
         android:name="xyz.blueowl.ispychallenge.ui.new_challenge.NewChallengeFragment"
         android:label="@string/title_new_challenge"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_new_challenge" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_data_browser"
         android:name="xyz.blueowl.ispychallenge.ui.data_browser.DataBrowserFragment"
         android:label="@string/title_data_browser"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_data_browser" >
+        <action
+            android:id="@+id/action_navigation_data_browser_to_navigation_user"
+            app:destination="@id/navigation_user" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_user"
+        android:name="xyz.blueowl.ispychallenge.ui.data_browser.user.UserFragment"
+        tools:layout="@layout/fragment_data_browser">
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_navigation_user_to_navigation_data_browser"
+            app:destination="@id/navigation_data_browser" />
+        <action
+            android:id="@+id/action_navigation_user_to_navigation_matches"
+            app:destination="@id/navigation_matches" />
+        <action
+            android:id="@+id/action_navigation_user_to_navigation_ratings"
+            app:destination="@id/navigation_ratings" />
+        <action
+            android:id="@+id/action_navigation_user_to_navigation_challenges"
+            app:destination="@id/navigation_challenges" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_challenges"
+        android:name="xyz.blueowl.ispychallenge.ui.data_browser.challenges.ChallengesFragment"
+        tools:layout="@layout/fragment_data_browser">
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_navigation_challenges_to_navigation_challenge"
+            app:destination="@id/navigation_challenge" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_challenge"
+        android:name="xyz.blueowl.ispychallenge.ui.data_browser.challenges.ChallengeFragment"
+        tools:layout="@layout/fragment_data_browser">
+        <argument
+            android:name="challengeId"
+            app:argType="string"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_navigation_challenge_to_navigation_user"
+            app:destination="@id/navigation_user" />
+        <action
+            android:id="@+id/action_navigation_challenge_to_navigation_matches"
+            app:destination="@id/navigation_matches" />
+        <action
+            android:id="@+id/action_navigation_challenge_to_navigation_ratings"
+            app:destination="@id/navigation_ratings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_matches"
+        android:name="xyz.blueowl.ispychallenge.ui.data_browser.matches.MatchesFragment"
+        tools:layout="@layout/fragment_data_browser">
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="challengeId"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_navigation_matches_to_navigation_match"
+            app:destination="@id/navigation_match" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_match"
+        android:name="xyz.blueowl.ispychallenge.ui.data_browser.matches.MatchFragment"
+        tools:layout="@layout/fragment_data_browser">
+        <argument
+            android:name="matchId"
+            app:argType="string"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_navigation_match_to_navigation_challenge"
+            app:destination="@id/navigation_challenge" />
+        <action
+            android:id="@+id/action_navigation_match_to_navigation_user"
+            app:destination="@id/navigation_user" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_ratings"
+        android:name="xyz.blueowl.ispychallenge.ui.data_browser.ratings.RatingsFragment"
+        tools:layout="@layout/fragment_data_browser">
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="challengeId"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

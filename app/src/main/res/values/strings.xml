@@ -3,4 +3,6 @@
     <string name="title_near_me">Near Me</string>
     <string name="title_new_challenge">New Challenge</string>
     <string name="title_data_browser">Data Browser</string>
+    <string name="header_attributes">ATTRIBUTES</string>
+    <string name="header_relationships">RELATIONSHIPS</string>
 </resources>

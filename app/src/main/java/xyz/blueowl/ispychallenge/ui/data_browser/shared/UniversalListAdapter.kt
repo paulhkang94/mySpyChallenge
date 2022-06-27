@@ -1,4 +1,4 @@
-package xyz.blueowl.ispychallenge.ui.shared
+package xyz.blueowl.ispychallenge.ui.data_browser.shared
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import xyz.blueowl.ispychallenge.R
+import xyz.blueowl.ispychallenge.databinding.ItemHeaderBinding
 
 /**
  * A base recycler view adapter that can be used across the app. This internally uses [ListAdapter] and every recyclerview
@@ -77,7 +79,6 @@ class ItemViewHolder(
  */
 abstract class AdapterItem {
     abstract val id: Any
-    abstract val content: Any?
 
     @get:LayoutRes
     abstract val layoutResource: Int
@@ -87,6 +88,26 @@ abstract class AdapterItem {
     abstract override fun hashCode(): Int
     open fun unbind() {
         // override if required
+    }
+}
+
+interface HeaderData {
+    val headerResId: Int
+}
+
+/**
+ * A data class that is used to represent the most generic header in a list
+ * @param headerData - data class that contains the header string resource ID
+ */
+data class HeaderItem (
+    val headerData: HeaderData
+): AdapterItem() {
+    override val id: Any = headerData.headerResId
+    override val layoutResource: Int = R.layout.item_header
+    override fun bind(view: View) {
+        ItemHeaderBinding.bind(view).apply {
+            this.textHeader.setText(headerData.headerResId)
+        }
     }
 }
 

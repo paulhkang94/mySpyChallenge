@@ -1,33 +1,27 @@
 package xyz.blueowl.ispychallenge.ui.data_browser
 
-import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import xyz.blueowl.ispychallenge.data.repository.DataRepository
-import xyz.blueowl.ispychallenge.ui.data_browser.adapter_items.UserItem
+import xyz.blueowl.ispychallenge.ui.data_browser.adapter_items.ImageTextChevronItem
+import xyz.blueowl.ispychallenge.ui.data_browser.shared.BaseDataBrowserViewModel
+import xyz.blueowl.ispychallenge.ui.data_browser.shared.DataBrowserNavState
 
 class DataBrowserViewModel(
     dataRepository: DataRepository
-) : ViewModel() {
-
-    private val _userList = MutableSharedFlow<List<UserItem>>(replay = 1)
-
-    val userList: Flow<List<UserItem>>
-        get() = _userList
+) : BaseDataBrowserViewModel() {
 
     init {
         val userItems = dataRepository.allUsers.map { user ->
-            UserItem(
+            ImageTextChevronItem(
                 user.username,
                 user.email,
-                user.avatarThumbnailUrl.toString()
+                user.avatarLargeUrl.toString()
             ) { onUserClick(user.id) }
         }
 
-        _userList.tryEmit(userItems)
+        _adapterItems.tryEmit(userItems)
     }
 
     private val onUserClick: (userId: String) -> Unit = {
-
+        _navigationFlow.tryEmit(DataBrowserNavState.UserNavState(it))
     }
 }

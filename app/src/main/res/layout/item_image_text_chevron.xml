@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    style="@style/list_container_padding">
 
     <ImageView
-        android:id="@+id/image_user"
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,23 +16,28 @@
         tools:src="@drawable/ic_baseline_storage_24" />
 
     <TextView
-        android:id="@+id/text_username"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_header"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/image_user"
+        android:textColor="@color/black"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textAlignment="textStart"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintEnd_toStartOf="@+id/image_chevron"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="username" />
 
     <TextView
-        android:id="@+id/text_email"
+        android:id="@+id/text_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintStart_toEndOf="@+id/image_user"
-        app:layout_constraintTop_toBottomOf="@+id/text_username"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/text_header"
         tools:text="email" />
 
     <ImageView
@@ -40,8 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_chevron_right_24"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
