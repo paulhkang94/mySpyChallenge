@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="graphite">#233746</color>
+    <color name="slate">#546e7a</color>
+    <color name="medium_slate">#96abba</color>
+    <color name="dark_slate">#435860</color>
+    <color name="light_slate">#ECF0F3</color>
+    <color name="grass">#35A200</color>
+    <color name="forest">#007a5c</color>
+    <color name="lime">#95D600</color>
+    <color name="matcha">#B8E364</color>
+    <color name="honeydew">#c8e99d</color>
+    <color name="frenchgray">#F7F8F3</color>
+    <color name="mist">#E9F2EF</color>
+    <color name="seafoam">#CDE5D7</color>
+    <color name="teal">#94CEC4</color>
+    <color name="dark_sky">#26bbdd</color>
+    <color name="sky">#17D0EF</color>
+    <color name="rose">#F1C3B0</color>
+    <color name="brown">#6A5F5E</color>
+    <color name="yellow">#fcd532</color>
+    <color name="dark_red">#cd4c01</color>
+    <color name="orange">#F5A623</color>
+    <color name="dark_orange">#E36F00 </color>
+    <color name="red">#ff6e51</color>
+    <color name="black">#000000</color>
 </resources>
