@@ -31,7 +31,7 @@ class ChallengesViewModel(
         return ImageTextChevronItem(
             header = this.hint,
             label = "(${this.latitude}, ${this.longitude})",
-            imageUrl = "file:///android_asset/${this.photoImageName}"
+            imageUrl = this.photoImageName
         ) {
             onChallengeClick(this.id)
         }

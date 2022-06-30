@@ -40,7 +40,7 @@ class MatchesViewModel(
         return ImageTextChevronItem(
             header = "Match",
             label = "(${this.latitude}, ${this.longitude}",
-            imageUrl = "file:///android_asset/${this.photoImageName}"
+            imageUrl = this.photoImageName
         ) {
             onMatchClick(this.id)
         }

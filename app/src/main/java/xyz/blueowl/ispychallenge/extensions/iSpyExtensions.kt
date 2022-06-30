@@ -27,7 +27,7 @@ fun Challenge(apiChallenge: APIChallenge) = Challenge(
     hint = apiChallenge.hint,
     latitude = apiChallenge.location.latitude,
     longitude = apiChallenge.location.longitude,
-    photoImageName = apiChallenge.photo,
+    photoImageName = "file:///android_asset/${apiChallenge.photo}",
     userId = apiChallenge.user,
     matches = apiChallenge.matches.map { Match(it) },
     ratings = apiChallenge.ratings.map { Rating(it) }
@@ -37,7 +37,7 @@ fun Match(apiMatch: APIMatch) = Match(
     id = apiMatch.id,
     latitude = apiMatch.location.latitude,
     longitude = apiMatch.location.longitude,
-    photoImageName = apiMatch.photo,
+    photoImageName = "file:///android_asset/${apiMatch.photo}",
     verified = apiMatch.verified,
     userId = apiMatch.user
 )
