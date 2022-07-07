@@ -23,7 +23,7 @@ In order to start the challenge, we ask candidates to clone the repository in th
 
 ````
 $ cd ~/Desktop
-$ git clone https://github.com/BlueOwlDev/iSpyChallenge-Android.git --origin BlueOwl mySpyChallenge
+$ git clone https://github.com/BlueOwlOpenSource/iSpyChallenge-Android.git --origin BlueOwl mySpyChallenge
 $ cd mySpyChallenge
 $ git remote add origin https://github.com/[username]/mySpyChallenge.git
 $ git push -u origin main
