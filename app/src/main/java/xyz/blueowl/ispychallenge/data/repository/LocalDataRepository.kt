@@ -4,6 +4,10 @@ import xyz.blueowl.ispychallenge.api.service.APIService
 import xyz.blueowl.ispychallenge.data.models.*
 import xyz.blueowl.ispychallenge.extensions.User
 
+/**
+ * Implementation of the Data Repository that gets the necessary data from the API Service and
+ * transforms it to the domain layer objects and stores in information in-memory locally.
+ */
 class LocalDataRepository(
     private val apiService: APIService
 ): DataRepository {

@@ -2,6 +2,9 @@ package xyz.blueowl.ispychallenge.data.repository
 
 import xyz.blueowl.ispychallenge.data.models.*
 
+/**
+ * Repository that provides all necessary data related to the I Spy game.
+ */
 interface DataRepository {
 
     val allUsers: List<User>

@@ -13,6 +13,12 @@ import xyz.blueowl.ispychallenge.databinding.ItemHeaderBinding
 /**
  * A base recycler view adapter that can be used across the app. This internally uses [ListAdapter] and every recyclerview
  * that uses this adapter need to conform to the model [AdapterItem] and follow the pattern defined in [ItemViewHolder]
+ *
+ * This function is used only in the DataBrowser UI package as it's similar to the current state of
+ * how the Android team uses the ListAdapter with RecyclerView.
+ *
+ * It is not required to use this class in further implementation of the Project, but can be if the candidate
+ * likes the implementation and usage of the class.
  */
 class UniversalListAdapter(private val listener: ((AdapterItem) -> Unit)? = null) : ListAdapter<AdapterItem, ItemViewHolder>(ItemDiffCallback) {
 

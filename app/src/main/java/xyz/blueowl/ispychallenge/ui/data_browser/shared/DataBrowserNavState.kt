@@ -1,5 +1,10 @@
 package xyz.blueowl.ispychallenge.ui.data_browser.shared
 
+/**
+ * State classes related to the navigation states of UI in the DataBrowser UI Package.
+ *
+ * It is not necessary to utilize this in the Tech Challenge.
+ */
 sealed class DataBrowserNavState {
 
     class UserNavState(val userId: String): DataBrowserNavState()
