@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import xyz.blueowl.ispychallenge.ISpyApplication
 import xyz.blueowl.ispychallenge.databinding.FragmentDataBrowserBinding
+import xyz.blueowl.ispychallenge.extensions.requireISpyApplication
 import xyz.blueowl.ispychallenge.ui.safeCollectFlow
 import xyz.blueowl.ispychallenge.ui.data_browser.shared.GenericSingleViewModelFactory
 import xyz.blueowl.ispychallenge.ui.data_browser.shared.UniversalListAdapter
@@ -45,7 +45,7 @@ class RatingsFragment: Fragment() {
         val ratingsAdapter = UniversalListAdapter()
 
         val factory = GenericSingleViewModelFactory (RatingsViewModel::class.java) {
-            RatingsViewModel(filterOption, (requireActivity().application as ISpyApplication).dataRepository)
+            RatingsViewModel(filterOption, requireISpyApplication().dataRepository)
         }
         val viewModel = ViewModelProvider(this, factory)[RatingsViewModel::class.java]
         _binding = FragmentDataBrowserBinding.inflate(inflater, container, false)

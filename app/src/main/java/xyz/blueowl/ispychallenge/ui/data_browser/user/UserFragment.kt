@@ -9,10 +9,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import xyz.blueowl.ispychallenge.ISpyApplication
 import xyz.blueowl.ispychallenge.data.repository.DataRepository
 import xyz.blueowl.ispychallenge.databinding.FragmentDataBrowserBinding
-import xyz.blueowl.ispychallenge.ui.data_browser.DataBrowserFragmentDirections
+import xyz.blueowl.ispychallenge.extensions.requireISpyApplication
 import xyz.blueowl.ispychallenge.ui.data_browser.shared.DataBrowserNavState
 import xyz.blueowl.ispychallenge.ui.safeCollectFlow
 import xyz.blueowl.ispychallenge.ui.data_browser.shared.UniversalListAdapter
@@ -36,7 +35,7 @@ class UserFragment: Fragment() {
             params.userId
         } ?: throw IllegalStateException("Missing user id")
 
-        val factory = UserViewModelFactory(userId, (requireActivity().application as ISpyApplication).dataRepository)
+        val factory = UserViewModelFactory(userId, requireISpyApplication().dataRepository)
         val userViewModel = ViewModelProvider(this, factory)[UserViewModel::class.java]
 
         _binding = FragmentDataBrowserBinding.inflate(inflater, container, false)

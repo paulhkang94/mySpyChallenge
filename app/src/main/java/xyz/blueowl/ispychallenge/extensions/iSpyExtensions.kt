@@ -1,5 +1,7 @@
 package xyz.blueowl.ispychallenge.extensions
 
+import androidx.fragment.app.Fragment
+import xyz.blueowl.ispychallenge.ISpyApplication
 import xyz.blueowl.ispychallenge.api.models.APIChallenge
 import xyz.blueowl.ispychallenge.api.models.APIMatch
 import xyz.blueowl.ispychallenge.api.models.APIRating
@@ -47,3 +49,7 @@ fun Rating(apiRating: APIRating) = Rating(
     stars = apiRating.value,
     userId = apiRating.user
 )
+
+fun Fragment.requireISpyApplication(): ISpyApplication {
+    return (requireActivity().application as ISpyApplication)
+}

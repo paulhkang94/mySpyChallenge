@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import xyz.blueowl.ispychallenge.ISpyApplication
 import xyz.blueowl.ispychallenge.databinding.FragmentDataBrowserBinding
+import xyz.blueowl.ispychallenge.extensions.requireISpyApplication
 import xyz.blueowl.ispychallenge.ui.data_browser.shared.DataBrowserNavState
 import xyz.blueowl.ispychallenge.ui.data_browser.shared.GenericSingleViewModelFactory
 import xyz.blueowl.ispychallenge.ui.data_browser.shared.UniversalListAdapter
@@ -36,7 +36,7 @@ class MatchFragment: Fragment() {
         val matchAdapter = UniversalListAdapter()
 
         val factory = GenericSingleViewModelFactory(MatchViewModel::class.java) {
-            MatchViewModel(matchId, (requireActivity().application as ISpyApplication).dataRepository)
+            MatchViewModel(matchId, requireISpyApplication().dataRepository)
         }
         val viewModel = ViewModelProvider(this, factory)[MatchViewModel::class.java]
         _binding = FragmentDataBrowserBinding.inflate(inflater, container, false)

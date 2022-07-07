@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import xyz.blueowl.ispychallenge.ISpyApplication
 import xyz.blueowl.ispychallenge.R
 import xyz.blueowl.ispychallenge.databinding.ActivityMainBinding
 
