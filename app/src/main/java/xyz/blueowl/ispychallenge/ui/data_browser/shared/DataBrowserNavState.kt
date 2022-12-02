@@ -6,7 +6,7 @@ package xyz.blueowl.ispychallenge.ui.data_browser.shared
  * It is not necessary to utilize this in the Tech Challenge.
  */
 sealed class DataBrowserNavState {
-
+    class ChallengeImageState(val challengeId: String): DataBrowserNavState()
     class UserNavState(val userId: String): DataBrowserNavState()
     class ChallengesNavState(val userId: String): DataBrowserNavState()
     class ChallengeNavState(val challengeId: String): DataBrowserNavState()

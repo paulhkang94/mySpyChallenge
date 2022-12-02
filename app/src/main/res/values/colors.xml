@@ -24,4 +24,5 @@
     <color name="dark_orange">#E36F00 </color>
     <color name="red">#ff6e51</color>
     <color name="black">#000000</color>
+    <color name="grey">#787878</color>
 </resources>

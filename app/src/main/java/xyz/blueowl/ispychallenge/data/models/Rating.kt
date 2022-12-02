@@ -13,3 +13,4 @@ data class Rating(
     val stars: Int,
     val userId: String
 )
+
